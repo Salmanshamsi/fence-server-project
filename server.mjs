@@ -4,7 +4,9 @@ import cors from 'cors';
 import path from 'path';
 import mongoose from 'mongoose';
 import "./config/index.mjs";
-import Auth from './routes/Auth.mjs'
+import Auth from './routes/Auth.mjs';
+import Design from "./routes/Design.mjs";
+import CheckOut from "./routes/Payment.mjs";
 
 // ....server initiallization..
 
@@ -20,16 +22,20 @@ app.use(express.static(path.join(process.cwd() + "/public" )));
 
 // mongoose initialization...
 
-mongoose.connect(process.env.MONGO_DB_URI).then(() => {
-  console.log("DB IS CONNECTED");
-}).catch((err) => {
-  console.log("Error while connecting to the database.", err);
-});
+mongoose.connect(process.env.MONGO_DB_URI).then(()=>{
+  console.log("connected sucessfully !");
+}).catch((err)=>{
+  console.log("connection Error : !" + err);
+})
+
 
 // ........APIs.......................
 
-
+app.use('/design',Design);
+app.use('/payment',CheckOut);
 app.use('/auth',Auth);
+
+// ------------------------------------
 
 
 // Start the server
