@@ -26,8 +26,8 @@ const saveData = async (req, res) => {
       }
     } catch (error) {
 
-      console.error("Error saving todo item:", error);
-      res.status(500).send("Error saving todo item");
+      console.error("Error saving  item:", error);
+      res.status(500).send("Error saving  item");
 
     }
   };
