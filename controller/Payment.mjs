@@ -24,8 +24,8 @@ const checkOut = async (req, res) => {
         payment_method_types: ["card"],
         mode: "payment",
         line_items: lineItems,
-        success_url: "http://localhost:5173/success",
-        cancel_url: "http://localhost:5173/cancel",
+        success_url: "https://fence-web-project.vercel.app/success",
+        cancel_url: "https://fence-web-project.vercel.app/cancel",
       });
   
       res.json({ url: session.url });
